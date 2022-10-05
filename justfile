@@ -3,6 +3,7 @@ default:
 
 # Copy image in the target
 _copy_image:
+    mkdir -p dist
     cp -R assets dist/assets
 
 # generate html slides
