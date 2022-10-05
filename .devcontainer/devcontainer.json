@@ -23,7 +23,9 @@
         "vscode": {
             "extensions": [
                 "marp-team.marp-vscode",
-                "yzhang.markdown-all-in-one"
+                "yzhang.markdown-all-in-one",
+                "kokakiwi.vscode-just",
+                "OmarTawfik.github-actions-vscode"
             ],
             "settings": {
                 "markdown.marp.enableHtml": true
@@ -33,6 +35,7 @@
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/git-lfs:1": {},
+        "ghcr.io/devcontainers/features/node:1": {},
         "ghcr.io/guiyomh/features/fish": {},
         "ghcr.io/guiyomh/features/just": {},
         "ghcr.io/guiyomh/features/vim": {}
