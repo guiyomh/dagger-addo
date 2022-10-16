@@ -12,3 +12,10 @@ html: _copy_image
         --html \
         --output dist/index.html \
         slides.md
+
+watch:
+    npx @marp-team/marp-cli \
+        --html \
+        -w \
+        --output dist/index.html \
+        slides.md
