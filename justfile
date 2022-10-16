@@ -3,6 +3,7 @@ default:
 
 # Copy image in the target
 _copy_image:
+    rm -rf dist
     mkdir -p dist
     cp -R assets dist/assets
 
