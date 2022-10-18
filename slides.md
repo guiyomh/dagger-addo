@@ -42,7 +42,7 @@ section.white {
 
 **DevOps Coach,
 AWS Solution Architect,
-Kubernete evangelist**
+Kubernetes evangelist**
 
 </div>
 
