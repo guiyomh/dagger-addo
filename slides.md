@@ -38,7 +38,7 @@ section.white {
 
 ![drop-shadow:0,5px,10px,rgba(0,0,0,.4)](./assets/laurent-gil.png)
 
-## Laurent GIL
+## [Laurent GIL](https://www.linkedin.com/in/laurent-gil/?locale=en_US)
 
 **DevOps Coach,
 AWS Solution Architect,
@@ -50,7 +50,7 @@ Kubernete evangelist**
 
 ![drop-shadow:0,4px,10px,rgba(0,0,0,.4)](./assets/guillaume-camus.png)
 
-## Guillaume CAMUS
+## [Guillaume CAMUS](https://www.linkedin.com/in/guillaumecamus/?locale=en_US)
 
 **Developer and Quality Engineer**
 Curious, I like to design things and check if the design is viable and fits the needs.
