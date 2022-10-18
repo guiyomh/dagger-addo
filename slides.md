@@ -73,7 +73,7 @@ Curious, I like to design things and check if the design is viable and fits the 
 
 - Internal Developer Platform
 - Infrastructure as code libraries
-- **Pipeline libraries**
+- 👉 **Pipeline libraries** 👈
 
 ---
 
@@ -90,9 +90,9 @@ Curious, I like to design things and check if the design is viable and fits the 
 
 By using a container approach, Dagger solved the following issues :
 
-- Create a portable library
-- Test pipeline jobs on development environment
-- Locally reproduce the CI / CD execution context
+- 👉 **Create a portable library** 👈
+- 👉 **Test pipeline jobs on development environment** 👈
+- 👉 **Locally reproduce the CI / CD execution context** 👈
 
 ---
 
