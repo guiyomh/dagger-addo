@@ -7,7 +7,6 @@ backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.svg')
 transition: drop
 ---
-
 <style>
 .container { display: flex; }
 .col{ flex: 1;}
@@ -19,10 +18,10 @@ section.white {
 }
 </style>
 
-
 <!-- https://marpit.marp.app/directives -->
 
 # Accelerate pipeline library creation
+
 ## with Dagger
 
 ![bg left:40% 80%](./assets/dagger_logo_portrait.svg)
@@ -41,8 +40,9 @@ section.white {
 
 ## Laurent GIL
 
-**AWS Solution Architect,**
-Passionate by technology and automation.
+**DevOps Coach,
+AWS Solution Architect,
+Kubernete evangelist**
 
 </div>
 
@@ -58,6 +58,41 @@ Curious, I like to design things and check if the design is viable and fits the 
 </div>
 
 </div>
+
+---
+
+# Problem statement
+
+- How to accelerate the value stream of engineering teams
+- How to enforce continuous integration and continuous deployment best practices
+- How to decrease the amount of work made by developers to go to production
+
+---
+
+# Multiple tools / solutions
+
+- Internal Developer Platform
+- Infrastructure as code libraries
+- **Pipeline libraries**
+
+---
+
+# Pipeline library development pain points
+
+- KISS, Keep It Simple & Stupid
+- Create a portable library
+- Test pipeline jobs on development environment
+- Locally reproduce the CI / CD execution context
+
+---
+
+# What problems Dagger address
+
+By using a container approach, Dagger solved the following issues :
+
+- Create a portable library
+- Test pipeline jobs on development environment
+- Locally reproduce the CI / CD execution context
 
 ---
 
@@ -125,11 +160,43 @@ Dagger is portable and compatible
 -->
 
 ---
-# Bye the complexity
 
-- Goodbye **JSON**, **YAML**, welcome **CUE**
+# How it works
+
+![bg left 80%](assets/dagger.drawio.png)
+
+- *Plan*: Contain actions
+- *Actions*: Define jobs to execute
+- *Clients*: Interact with the underlying operating system
+- *Secrets*: Store sensitive data
+  
+---
+
+# About CUE
+
+<!--
+- Created by google
+- Originally designed to configure Borg, the K8s predecessor
+-->
+- Open-source data validation language and inference engine
+- Data validation
+- Data templating
+- Configuration
+- Querying
+- Code generation
+- Even scripting
 
 ---
+
+![bg left](assets/hands-on.jpg)
+
+# Hands-on time
+
+---
+
+
+
+
 # <!-- fit --> All start with a **Plan**
 
 ![bg 60%](assets/loves-plan-together.jpeg)
