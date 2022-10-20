@@ -12,6 +12,8 @@ html: _copy_image
     npx @marp-team/marp-cli \
         --html \
         --output dist/index.html \
+        --theme-set addo.css \
+        -- \
         slides.md
 
 watch:
