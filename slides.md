@@ -64,8 +64,9 @@ Curious, I like to design things and check if the design is viable and fits the 
 # Problem statement
 
 - How to accelerate the value stream of engineering teams
-- How to enforce continuous integration and continuous deployment best practices
-- How to decrease the amount of work made by developers to go to production
+- How to quickly push new ideas to production
+- How to adopt an application centric workflow to decrease the cycle time
+- How to enable a smooth communication between engineering teams and platform ones
 
 ---
 
@@ -77,12 +78,24 @@ Curious, I like to design things and check if the design is viable and fits the 
 
 ---
 
-# Pipeline library development pain points
+# Why create a pipeline library
+
+- Decrease developer workload to push code to production
+- Mutualize pipeline best practices across the company
+  - DevSecOps
+  - Compliance
+  - Tests
+- Break silos
+- Improve cycle time
+  
+---
+
+# Pipeline library development challenges
 
 - KISS, Keep It Simple & Stupid
-- Create a portable library
-- Test pipeline jobs on development environment
-- Locally reproduce the CI / CD execution context
+- Avoid the one size fits all solution
+- Create a portable library (avoid orchestrator lock-in)
+- Enable productivity by allowing job local execution
 
 ---
 
@@ -90,9 +103,74 @@ Curious, I like to design things and check if the design is viable and fits the 
 
 By using a container approach, Dagger solved the following issues :
 
-- 👉 **Create a portable library** 👈
-- 👉 **Test pipeline jobs on development environment** 👈
-- 👉 **Locally reproduce the CI / CD execution context** 👈
+- 👉 **Create a portable library (avoid orchestrator locking)** 👈
+- 👉 **Enable productivity by allowing job local execution** 👈
+
+---
+
+![bg center:50% 50%](./assets/dagger_logo_portrait.svg)
+
+---
+# History
+
+- First line of code in **December 2020** by **Solomon Hykes**'team (ex-docker)
+- **Independent** and **agnostic** of any language
+- **Can be used locally**
+
+<!--
+Dagger is portable and compatible
+-->
+
+---
+
+# How does it work
+
+![bg left 80%](assets/dagger.drawio.png)
+
+- *Plan*: Contain actions
+- *Actions*: Define jobs to execute
+- *Clients*: Interact with the underlying operating system
+- *Secrets*: Store sensitive data
+  
+---
+
+# About CUE
+
+<!--
+- Created by google
+- Originally designed to configure Borg, the K8s predecessor
+-->
+- Open-source data validation language and inference engine
+- Data validation
+- Data templating
+- Configuration
+- Querying
+- Code generation
+- Even scripting
+
+---
+
+![bg left](assets/hands-on.jpg)
+
+# Hands-on time
+
+---
+
+# Idea
+
+- Typed input because of CUE language
+
+---
+
+# <!-- fit --> All start with a **Plan**
+
+![bg 60%](assets/loves-plan-together.jpeg)
+
+![bg 60%](assets/plan-dagger.png)
+
+---
+
+# Backup slides
 
 ---
 
@@ -130,9 +208,11 @@ By using a container approach, Dagger solved the following issues :
 
 > **All this combined consumes a lot of time**
 
----
 <!-- _class: white -->
 
+---
+
+<!-- _class: white -->
 # A pipeline library to do what?
 
 ![bg](assets/question.jpeg)
@@ -143,62 +223,3 @@ By using a container approach, Dagger solved the following issues :
   -->
 - run in a **unified way** in any <br />language (java, golang, nodejs,...)
 - unit testing of tasks / jobs
-
----
-
-![bg center:50% 50%](./assets/dagger_logo_portrait.svg)
-
----
-# History
-
-- First line of code in **December 2020** by **Solomon Hykes**'team (ex-docker)
-- **Independent** and **agnostic** of any language
-- **Can be used locally**
-
-<!--
-Dagger is portable and compatible
--->
-
----
-
-# How it works
-
-![bg left 80%](assets/dagger.drawio.png)
-
-- *Plan*: Contain actions
-- *Actions*: Define jobs to execute
-- *Clients*: Interact with the underlying operating system
-- *Secrets*: Store sensitive data
-  
----
-
-# About CUE
-
-<!--
-- Created by google
-- Originally designed to configure Borg, the K8s predecessor
--->
-- Open-source data validation language and inference engine
-- Data validation
-- Data templating
-- Configuration
-- Querying
-- Code generation
-- Even scripting
-
----
-
-![bg left](assets/hands-on.jpg)
-
-# Hands-on time
-
----
-
-
-
-
-# <!-- fit --> All start with a **Plan**
-
-![bg 60%](assets/loves-plan-together.jpeg)
-
-![bg 60%](assets/plan-dagger.png)
