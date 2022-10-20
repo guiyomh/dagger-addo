@@ -1,42 +1,27 @@
 ---
 marp: true
-theme: gaia
+size: 16:9
+theme: addo2022
 _class: lead
 paginate: true
-backgroundColor: #fff
-backgroundImage: url('https://marp.app/assets/hero-background.svg')
 transition: drop
 ---
-<style>
-.container { display: flex; }
-.col{ flex: 1;}
-.col img {display: flex;margin: auto}
-.col h2{ text-align: center}
-section.white {
-  color: white;
-  text-shadow: #000 1px 0 10px;
-}
-</style>
-
-<!-- https://marpit.marp.app/directives -->
+<!-- _class: main -->
 
 # Accelerate pipeline library creation
 
-## with Dagger
-
-![bg left:40% 80%](./assets/dagger_logo_portrait.svg)
+<div class="author">Laurent Gil and Guillaume Camus</div>
 
 ---
-<!-- _class: white -->
+
 # Who are we?
 
-![bg](assets/who-are.jpeg)
 
 <div class="container">
 
 <div class="col">
 
-![drop-shadow:0,5px,10px,rgba(0,0,0,.4)](./assets/laurent-gil.png)
+![drop-shadow:0,5px,10px,rgba(0,0,0,.4) width:150px](./assets/laurent-gil.png)
 
 ## [Laurent GIL](https://www.linkedin.com/in/laurent-gil/?locale=en_US)
 
@@ -48,12 +33,11 @@ Kubernetes evangelist**
 
 <div class="col">
 
-![drop-shadow:0,4px,10px,rgba(0,0,0,.4)](./assets/guillaume-camus.png)
+![drop-shadow:0,4px,10px,rgba(0,0,0,.4) width:150px](./assets/guillaume-camus.png)
 
 ## [Guillaume CAMUS](https://www.linkedin.com/in/guillaumecamus/?locale=en_US)
 
 **Developer and Quality Engineer**
-Curious, I like to design things and check if the design is viable and fits the needs.
 
 </div>
 
@@ -87,7 +71,7 @@ Curious, I like to design things and check if the design is viable and fits the 
   - Tests
 - Break silos
 - Improve cycle time
-  
+
 ---
 
 # Pipeline library development challenges
@@ -107,10 +91,11 @@ By using a container approach, Dagger solved the following issues :
 - 👉 **Enable productivity by allowing job local execution** 👈
 
 ---
-
-![bg center:50% 50%](./assets/dagger_logo_portrait.svg)
+<!-- _class: header -->
+![bg center:40% 40%](./assets/dagger_logo_portrait_on_black.svg)
 
 ---
+
 # History
 
 - First line of code in **December 2020** by **Solomon Hykes**'team (ex-docker)
@@ -125,13 +110,13 @@ Dagger is portable and compatible
 
 # How does it work
 
-![bg left 80%](assets/dagger.drawio.png)
+![bg left 70%](assets/dagger.drawio.png)
 
 - *Plan*: Contain actions
 - *Actions*: Define jobs to execute
 - *Clients*: Interact with the underlying operating system
 - *Secrets*: Store sensitive data
-  
+
 ---
 
 # About CUE
@@ -150,7 +135,7 @@ Dagger is portable and compatible
 
 ---
 
-![bg left](assets/hands-on.jpg)
+![bg right](assets/hands-on.jpg)
 
 # Hands-on time
 
@@ -187,18 +172,22 @@ Dagger is portable and compatible
 - you have to build, test, lint, <br /> sign, deploy ...
 - *CI environment* is not **not synchronized** <br /> with your *dev environment*
   <!--
+
   - the development environment is different from one developer to another, and is rarely consistent with that of the CI
   -->
 - you have to **maintain scripts**
   <!--
+
   - these scripts are rarely tested
   -->
 - Easy to make **configuration mistakes**
   <!--
+
   - there is no schema to validate the configuration. You can have a valid YAML file, but it is not understood by the CI. For example, define an environment variable with a boolean type.
   -->
 - there is always a new workflow, <br />a good practice
   <!--
+
   - there is always a new workflow, good practices to execute. This has the consequence that developers spend too much time on it instead of developing.
   So what do we do? We write scripts to automate all these workflows and tasks we have to perform.
   -->
@@ -219,6 +208,7 @@ Dagger is portable and compatible
 
 - **share** and **reuse** <br />the work of other teams
   <!--
+
   - have a modular and composable API
   -->
 - run in a **unified way** in any <br />language (java, golang, nodejs,...)
