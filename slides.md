@@ -121,21 +121,25 @@ Dagger is portable and compatible
 
 # About CUE
 
+CUE has all the features you wish in YAML or JSON:
+
+- string interpolation,
+- templating,
+- static type checking,
+- data validation,
+- code generation,
+- even scripting,
+
 <!--
 - Created by google
 - Originally designed to configure Borg, the K8s predecessor
 -->
-- Open-source data validation language and inference engine
-- Data validation
-- Data templating
-- Configuration
-- Querying
-- Code generation
-- Even scripting
+
+![bg right 60%](assets/cue-example.png)
 
 ---
 
-![bg right](assets/hands-on.jpg)
+![bg right:50% w:200%](assets/hands-on.jpg)
 
 # Hands-on time
 
@@ -154,6 +158,7 @@ Dagger is portable and compatible
 ![bg 60%](assets/plan-dagger.png)
 
 ---
+<!-- _class: header -->
 
 # Backup slides
 
@@ -197,8 +202,6 @@ Dagger is portable and compatible
 
 > **All this combined consumes a lot of time**
 
-<!-- _class: white -->
-
 ---
 
 <!-- _class: white -->
@@ -213,3 +216,19 @@ Dagger is portable and compatible
   -->
 - run in a **unified way** in any <br />language (java, golang, nodejs,...)
 - unit testing of tasks / jobs
+
+---
+# About CUE
+
+<!--
+- Created by google
+- Originally designed to configure Borg, the K8s predecessor
+-->
+- Open-source data validation language and inference engine
+- Data validation
+- Data templating
+- Configuration
+- Querying
+- Code generation
+- Even scripting
+-
