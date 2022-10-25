@@ -5,35 +5,57 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Install Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '18'
+  #     - name: Install Node
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: '18'
 
-      - name: Install Just
-        uses: extractions/setup-just@v1
+  #     - name: Install Just
+  #       uses: extractions/setup-just@v1
 
-      - name: Build HTML
-        run: |
-          just html
+  #     - name: Build HTML
+  #       run: |
+  #         just html
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-slides
-          path: dist/
-
-  build-dagger:
+  #     - name: Upload artifact
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: my-slides
+  #         path: dist/
+  lint:
     runs-on: ubuntu-latest
     env:
+      DAGGER_PLAN: "./dagger.cue"
+      DAGGER_ACTION: "lint"
       GITHUB_SHA: ${{ github.sha }}
-      DAGGER_PLAN: <TBD>
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Dagger
+        uses: dagger/dagger-for-github@v3
+        with:
+          install-only: true
+
+      - name: Dagger project update
+        run: dagger project update
+
+      - name: Build marp
+        run: dagger do --plan $DAGGER_PLAN $DAGGER_ACTION
+
+  build-dagger:
+    needs: lint
+    runs-on: ubuntu-latest
+    env:
+      DAGGER_PLAN: "./dagger.cue"
+      DAGGER_ACTION: "build"
+      GITHUB_SHA: ${{ github.sha }}
       # SSH_PRIVATE_KEY_DOCKER_SWARM: ${{ secrets.SSH_PRIVATE_KEY_DOCKER_SWARM }}
     steps:
       - name: Checkout code
@@ -43,14 +65,36 @@ jobs:
         uses: dagger/dagger-for-github@v3
         with:
           install-only: true
+
       - name: Dagger project update
         run: dagger project update
 
-      - name: Dagger project build
-        run: dagger do --plan $DAGGER_PLAN <action>
+      - name: Build marp
+        run: dagger do --plan $DAGGER_PLAN $DAGGER_ACTION
+
+      - name: Upload artifact website
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-slides-dagger
+          path: |
+            public/*.html
+            public/assets/
+
+      - name: Upload artifact pdf
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-slides-dagger-pdf
+          path: public/*.pdf
+
+      - name: Upload artifact pptx
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-slides-dagger-pptx
+          path: public/*.pptx
+      
       
   deploy:
-    needs: build
+    needs: build-dagger
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -59,7 +103,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: my-slides
+          name: my-slides-dagger
           path: dist/
 
       - name: Display structure of downloaded files
