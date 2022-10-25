@@ -11,3 +11,7 @@ RUN wget https://github.com/marp-team/marp-cli/releases/download/v${MARP_VERSION
 # ** [Optional] Uncomment this section to install additional packages. **
 # RUN apk update \
 #     && apk add --no-cache <your-package-list-here>
+
+# dagger
+RUN cd /usr/local \
+	&& curl -L https://dl.dagger.io/dagger/install.sh | sh
