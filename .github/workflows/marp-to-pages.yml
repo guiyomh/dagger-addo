@@ -29,6 +29,26 @@ jobs:
           name: my-slides
           path: dist/
 
+  build-dagger:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_SHA: ${{ github.sha }}
+      DAGGER_PLAN: <TBD>
+      # SSH_PRIVATE_KEY_DOCKER_SWARM: ${{ secrets.SSH_PRIVATE_KEY_DOCKER_SWARM }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Dagger
+        uses: dagger/dagger-for-github@v3
+        with:
+          install-only: true
+      - name: Dagger project update
+        run: dagger project update
+
+      - name: Dagger project build
+        run: dagger do --plan $DAGGER_PLAN <action>
+      
   deploy:
     needs: build
     runs-on: ubuntu-latest
