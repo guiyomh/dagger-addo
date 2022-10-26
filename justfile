@@ -22,3 +22,18 @@ watch:
         -w \
         --output dist/index.html \
         slides.md
+
+lint:
+    dagger do -p dagger.cue lint
+
+
+build type: _copy_image
+      npx @marp-team/marp-cli \
+        --{{type}} \
+        --output dist/index.{{type}} \
+        --theme-set addo.css \
+        -- \
+        slides.md
+
+dagger target:
+    dagger do -p dagger.cue {{target}}
