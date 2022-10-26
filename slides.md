@@ -107,6 +107,14 @@ Dagger is portable and compatible
 
 ---
 
+# Overview
+
+<!-- ![bg left 90%](assets/dagger-arch.png) -->
+
+![height:350px](assets/dagger-arch.png)
+
+---
+
 # How does it work
 
 ![bg left 70%](assets/dagger.drawio.png)
@@ -122,37 +130,74 @@ Dagger is portable and compatible
 
 CUE has all the features you wish in YAML or JSON:
 
-- string interpolation,
-- templating,
-- static type checking,
-- data validation,
-- code generation,
-- even scripting,
+- string interpolation
+- templating
+- static type checking
+- data validation
+- code generation
+- even scripting
 
 <!--
 - Created by google
 - Originally designed to configure Borg, the K8s predecessor
+- CUE => Strongly typed
 -->
 
 ![bg right 60%](assets/cue-example.png)
 
 ---
 
-![bg right:50% w:200%](assets/hands-on.jpg)
+![bg right:50% w:100%](assets/hands-on.jpg)
 
 # Hands-on time
 
 ---
 
-# Idea
+# Use case
 
-- Typed input because of CUE language
+![bg right:50% w:100%](assets/pipeline.png)
+
+A simple pipeline to build the presentation slides.
+
+3 steps:
+
+- 👉 **lint** 👈
+- 👉 **build** 👈
+- deploy
 
 ---
 
-# <!-- fit --> All start with a **Plan**
+# All start with a **Plan**
 
-![bg 60%](assets/loves-plan-together.jpeg)
+<!-- ![bg left fit](assets/loves-plan-together.jpeg) -->
 
-![bg 60%](assets/plan-dagger.png)
+![bg right fit](assets/dagger-plan.png)
 
+---
+
+# Import dependencies
+
+![bg left fit](assets/dagger-import.png)
+
+- Centrally develop common actions
+- Speed up pipeline creation by mutualizing / reusing code
+- Compose pipeline from reusable actions
+
+---
+
+# Lint action
+
+---
+
+# Lint usage
+
+![bg left fit](assets/dagger-action-lint.png)
+
+---
+
+# Build
+
+![bg left fit](assets/dagger-action-build.png)
+
+- Chain multiple steps
+- Export action onto the host file system
