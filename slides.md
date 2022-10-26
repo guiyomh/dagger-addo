@@ -16,7 +16,6 @@ transition: drop
 
 # Who are we?
 
-
 <div class="container">
 
 <div class="col">
@@ -25,9 +24,9 @@ transition: drop
 
 ## [Laurent GIL](https://www.linkedin.com/in/laurent-gil/?locale=en_US)
 
-**DevOps Coach,
+DevOps Coach,
 AWS Solution Architect,
-Kubernetes evangelist**
+Kubernetes evangelist
 
 </div>
 
@@ -37,7 +36,7 @@ Kubernetes evangelist**
 
 ## [Guillaume CAMUS](https://www.linkedin.com/in/guillaumecamus/?locale=en_US)
 
-**Developer and Quality Engineer**
+Developer and Quality Engineer
 
 </div>
 
@@ -218,7 +217,8 @@ CUE has all the features you wish in YAML or JSON:
 - unit testing of tasks / jobs
 
 ---
-# About CUE
+
+# About CUE (back)
 
 <!--
 - Created by google
@@ -231,4 +231,3 @@ CUE has all the features you wish in YAML or JSON:
 - Querying
 - Code generation
 - Even scripting
--
