@@ -187,11 +187,14 @@ A simple pipeline to build the presentation slides.
 
 # Lint action
 
+![bg left:60% 83%](assets/dagger-action-lint-1.png)
+![bg right:60% contain](assets/dagger-action-lint-2.png)
+
 ---
 
 # Lint usage
 
-![bg left fit](assets/dagger-action-lint.png)
+![bg left 90%](assets/dagger-action-lint.png)
 
 ---
 
@@ -201,3 +204,9 @@ A simple pipeline to build the presentation slides.
 
 - Chain multiple steps
 - Export action onto the host file system
+
+---
+
+# Integration with GitHub
+
+[View code on GitHub](https://github.com/guiyomh/dagger-addo/blob/main/.github/workflows/marp-to-pages.yml)
