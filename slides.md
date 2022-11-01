@@ -44,6 +44,16 @@ Developer and Quality Engineer
 
 ---
 
+<!--
+Nowadays, companies are engaged in a production value race. They need to continuously increase the customer value in pushing new ideas to production with a lean approach.
+
+To achieve it, they often adopt the DevOps culture trying to continuously improve value streams to always produce quicker with a better quality.
+
+During this journey, frameworks and tools allowing a better communication between the engineering teams and the operation ones are created.
+
+This is the type of issue we have tried to solve.
+-->
+
 # Problem statement
 
 - How to accelerate the value stream of engineering teams
@@ -52,6 +62,18 @@ Developer and Quality Engineer
 - How to enable a smooth communication between engineering teams and platform ones
 
 ---
+
+<!--
+
+Multiple solutions are commonly adopted such as :
+- Internal Developer Platform
+- IaaC libraries
+- Pipeline libraries
+
+Today, we will introduce a product which will address the pipeline library issue.
+
+Usually pipeline libraries are created by a team of experts with good automation skills, and a strong test culture. In addition to those skills, the team members are also familiar with advance deployment workflow as well as with infrastructure and configuration management. So that they can help the engineering team to become autonomous to publish their application to production.
+-->
 
 # Multiple tools / solutions
 
