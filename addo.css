@@ -7,9 +7,10 @@ section {
     height: 960px;
     background: #FFF url(./assets/background/banner.png) no-repeat;
     background-size: 1280px;
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 20pt;
     color: #222;
+    padding-top: 200px;
 }
 
 section.main {
@@ -45,6 +46,12 @@ section.hidden {
 section.thank {
     background: #FFF url(./assets/background/thank.png) no-repeat;
     background-size: 1280px;
+    color: #FFF;
+    text-align: center;
+}
+
+section.thank p {
+    padding-top: 250px;
 }
 
 h1 {
@@ -67,4 +74,8 @@ h1 {
 
 .col h2 {
     text-align: center
+}
+
+strong {
+    color: rgb(202, 13, 76);
 }
