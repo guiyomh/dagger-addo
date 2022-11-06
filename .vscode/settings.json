@@ -1,5 +1,13 @@
 {
     "markdown.marp.themes": [
         "./addo.css"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0A3514",
+        "activityBar.inactiveForeground": "#21e597",
+        "activityBar.activeBackground": "#21e597",
+        "activityBar.foreground": "#0A3514",
+        "titleBar.activeBackground": "#0F4A1C",
+        "titleBar.activeForeground": "#F2FCF4"
+    }
 }

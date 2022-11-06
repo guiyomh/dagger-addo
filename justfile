@@ -1,5 +1,8 @@
+# list all recipes
 default:
     @just --list
+
+html:="html"
 
 # Copy image in the target
 _copy_image:
@@ -7,15 +10,7 @@ _copy_image:
     mkdir -p dist
     cp -R assets dist/assets
 
-# generate html slides
-html: _copy_image
-    npx @marp-team/marp-cli \
-        --html \
-        --output dist/index.html \
-        --theme-set addo.css \
-        -- \
-        slides.md
-
+# watch change and refresh slides
 watch:
     npx @marp-team/marp-cli \
         --html \
@@ -23,17 +18,11 @@ watch:
         --output dist/index.html \
         slides.md
 
+# lint all the project
 lint:
-    dagger do -p dagger.cue lint
+    dagger-cue do -p dagger.cue lint
 
+# build slides in pdf, html, pdf
+build type=html:
+    dagger-cue do -p dagger.cue build {{type}}
 
-build type: _copy_image
-      npx @marp-team/marp-cli \
-        --{{type}} \
-        --output dist/index.{{type}} \
-        --theme-set addo.css \
-        -- \
-        slides.md
-
-dagger target:
-    dagger do -p dagger.cue {{target}}
