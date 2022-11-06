@@ -64,7 +64,7 @@ jobs:
         with:
           name: my-slides-dagger-${{matrix.type}}
           path: |
-            public/*
+            public/${{matrix.type}}/*
 
   deploy:
     if: github.ref == 'refs/heads/main'

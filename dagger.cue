@@ -15,7 +15,10 @@ _#DefaultAwsAccount: "000000000"
 _#DefaultAwsRegion:  "eu-west-3"
 
 dagger.#Plan & {
-	client: filesystem: "./public": write: contents: actions.build.output
+	// client: filesystem: "./public": write: contents: actions.build.output
+	client: filesystem: "./public/html": write: contents: actions.build.html.output
+	client: filesystem: "./public/pdf": write: contents: actions.build.pdf.output
+	client: filesystem: "./public/pptx": write: contents: actions.build.pptx.output
 	actions: {
 		// Load the source code
 		_source: core.#Source & {
@@ -67,7 +70,7 @@ dagger.#Plan & {
 				outputType: "html"
 			}
 			pdf: marp.#Build & {
-				source:     assets.output
+				source:     _source.output
 				markdown:   "slides.md"
 				outputDir:  "/dist"
 				theme:      "addo.css"
@@ -75,7 +78,7 @@ dagger.#Plan & {
 				outputType: "pdf"
 			}
 			pptx: marp.#Build & {
-				source:     assets.output
+				source:     _source.output
 				markdown:   "slides.md"
 				outputDir:  "/dist"
 				theme:      "addo.css"
