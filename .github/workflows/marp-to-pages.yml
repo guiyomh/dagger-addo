@@ -1,33 +1,18 @@
-name: deploy
-concurrency: deploy
+name: "CI"
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-
-  #     - name: Install Node
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: '18'
-
-  #     - name: Install Just
-  #       uses: extractions/setup-just@v1
-
-  #     - name: Build HTML
-  #       run: |
-  #         just html
-
-  #     - name: Upload artifact
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: my-slides
-  #         path: dist/
   lint:
     runs-on: ubuntu-latest
     env:
@@ -52,6 +37,12 @@ jobs:
   build-dagger:
     needs: lint
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        type:
+          - html
+          - pdf
+          - pptx
     env:
       DAGGER_PLAN: "./dagger.cue"
       DAGGER_ACTION: "build"
@@ -70,30 +61,17 @@ jobs:
         run: dagger project update
 
       - name: Build marp
-        run: dagger do --plan $DAGGER_PLAN $DAGGER_ACTION
+        run: dagger do --plan $DAGGER_PLAN $DAGGER_ACTION ${{matrix.type}}
 
-      - name: Upload artifact website
+      - name: Upload artifact ${{matrix.type}}
         uses: actions/upload-artifact@v3
         with:
-          name: my-slides-dagger
+          name: my-slides-dagger-${{matrix.type}}
           path: |
-            public/*.html
-            public/assets/
+            public/*
 
-      - name: Upload artifact pdf
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-slides-dagger-pdf
-          path: public/*.pdf
-
-      - name: Upload artifact pptx
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-slides-dagger-pptx
-          path: public/*.pptx
-      
-      
   deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: build-dagger
     runs-on: ubuntu-latest
     permissions:
@@ -103,7 +81,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: my-slides-dagger
+          name: my-slides-dagger-html
           path: dist/
 
       - name: Display structure of downloaded files
