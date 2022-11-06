@@ -117,34 +117,57 @@ By using a container approach, Dagger solved the following issues :
 
 ---
 
-# History
+# Overview
 
 - First line of code in **December 2020** by **Solomon Hykes**'team (ex-docker)
 - **Independent** and **agnostic** of any language
 - **Can be used locally**
 
+![bg right height:350px](assets/dagger-arch.png)
+
 <!--
-Dagger is portable and compatible
+Dagger is a programmable CI/CD engine that runs your pipelines in containers.
+Dagger executes your pipelines entirely as standard OCI containers. This has several benefits:
+
+- Instant local testing
+- Portability: the same pipeline can run on your local machine, a CI runner, a dedicated server, or any container hosting service.
+- Superior caching: every operation is cached by default, and caching works the same everywhere
+- Compatibility with the Docker ecosystem: if it runs in a container, you can add it to your pipeline.
+-->
+---
+
+# <fit> How does it work ?
+
+![bg right h:50%](assets/dagger-how-it-work.excalidraw.png)
+
+<!--
+1. You need to install Dagger.
+2. Using the SDK library, your program opens a new session on a Dagger engine.
+3. Using the SDK library, your program prepares API requests describing the pipelines to be executed and sends them to the engine.
+4. When the engine receives an API request, it computes a Directed Acyclic Graph (DAG) of operations and starts processing the operations simultaneously.
+5. When all operations in the pipeline have been resolved, the engine returns the pipeline result to your program.
+6. Your program can use the pipeline result as input for new pipelines.
 -->
 
 ---
 
-# Overview
+# Some concept
 
-<!-- ![bg left 90%](assets/dagger-arch.png) -->
+![bg left 80%](assets/dagger.excalidraw.png)
 
-![height:350px](assets/dagger-arch.png)
+- **Plan**: is the pipeline manifest.
+  - **Actions**: Define jobs to execute
+  - **Clients**: Interact with the underlying operating system
 
----
+<!--
+All starts with a plan.
+Within this plan we can:
 
-# How does it work
-
-![bg left 70%](assets/dagger.drawio.png)
-
-- *Plan*: Contain actions
-- *Actions*: Define jobs to execute
-- *Clients*: Interact with the underlying operating system
-- *Secrets*: Store sensitive data
+- interact with the client
+  - read  /write files on the host
+  - read env variables in the host
+- declare actions
+-->
 
 ---
 
@@ -160,18 +183,34 @@ CUE has all the features you wish in YAML or JSON:
 - even scripting
 
 <!--
-- Created by google
-- Originally designed to configure Borg, the K8s predecessor
-- CUE => Strongly typed
+It is a configuration language created by google.
+Originally, it was used to configure Borg, the predecessor of the K8.
+Cue is a mix between YAML and JSON with additional features.
+
+Currently, we used to validate configuration files.
+
+Here you have an example of what can be done with cue.
+We describe a Person structure. This structure is composed of an age and a list of hobbies.
+
+Then we describe another structure Adult which inherits from Person, but which adds a constraint on the age.
+
+And finally we implement the Adult structure with John. Of course, if we put an age lower than 21, Cue would have raised an error.
+
+Dagger uses this language to describe the pipeline. This is very useful, because if we make an error we are immediately alerted, because the plan does not compile.
 -->
 
 ![bg right 60%](assets/cue-example.png)
 
 ---
+<!-- _class: header -->
 
 ![bg right:50% w:100%](assets/hands-on.jpg)
 
 # Hands-on time
+
+<!--
+Now it's time to practice.
+-->
 
 ---
 
@@ -186,6 +225,17 @@ A simple pipeline to build the presentation slides.
 - 👉 **lint** 👈
 - 👉 **build** 👈
 - deploy
+
+<!--
+Let's take a simple use case.
+We made this presentation in markdown.
+The slides are versioned in Github, built with Github Action and hosted on Github Pages.
+
+We have a simple pipeline. In 3 steps:
+- we have a linter to make sure the markdown is correct.
+- then we have a build task for the slides.
+- then we publish the slides on Github pages
+-->
 
 ---
 
@@ -232,3 +282,8 @@ A simple pipeline to build the presentation slides.
 # Integration with GitHub
 
 [View code on GitHub](https://github.com/guiyomh/dagger-addo/blob/main/.github/workflows/marp-to-pages.yml)
+
+---
+<!-- _class: thank -->
+
+Thank for all
