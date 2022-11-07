@@ -308,6 +308,9 @@ We have chosen to put it as input parameter in order to override it with a custo
 
 And finally, we use the definition `docker.Run` provided by dagger to run a command line in the container.
 
+Okay!
+
+Now that we have our definitions, how can we use them?
 -->
 
 ---
@@ -315,6 +318,17 @@ And finally, we use the definition `docker.Run` provided by dagger to run a comm
 # Lint in action
 
 ![h:480](assets/dagger-lint-action.excalidraw.png)
+
+<!--
+We start by importing our cue package.
+Then we create a lint action that extends our markdown.#Lint definition (the red box)
+And we define our source and file input parameters.
+As we don't specify an image, dagger will use the image defined by default in our Lint definitions.
+
+That's it. It's not much more complicated than that.
+
+Ok, I know how to create actions, but where is my pipeline?
+-->
 
 ---
 
