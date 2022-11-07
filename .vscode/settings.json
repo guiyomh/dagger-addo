@@ -2,6 +2,11 @@
     "markdown.marp.themes": [
         "./addo.css"
     ],
+    "codesnap.backgroundColor": "#abb8c3",
+    "codesnap.boxShadow": "rgba(0, 0, 0, 0.35) 0px 8px 8px",
+    "codesnap.containerPadding": "1em",
+    "codesnap.showWindowControls": false,
+    "codesnap.transparentBackground": true,
     "workbench.colorCustomizations": {
         "activityBar.background": "#0A3514",
         "activityBar.inactiveForeground": "#21e597",
