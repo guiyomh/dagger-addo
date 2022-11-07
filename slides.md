@@ -288,13 +288,33 @@ It also allows us to ensure a relative homogeneity between projects.
 
 # Markdown definitions
 
-![bg right fit](assets/dagger-definition-markdown.excalidraw.png)
+![h:480](assets/dagger-definition-markdown.excalidraw.png)
+
+<!--
+Ok, let's start by creating our first definition.
+
+For our action to run we need an image.
+So we create an image definition. Which takes as input the name of the image
+and the tag of the image.
+
+As we have a private repository at ManoMano, we also add the possibility to define a username and a secret as input.
+And finally, we use the definition provided by dagger to pull the image.
+
+Now let's create our definitions for markdown lint.
+We need the source of our project, and the list of files to transform into html.
+
+We use the image property, to define the execution environment of our future action.
+We have chosen to put it as input parameter in order to override it with a custom image.
+
+And finally, we use the definition `docker.Run` provided by dagger to run a command line in the container.
+
+-->
 
 ---
 
 # Lint in action
 
-![bg left fit](assets/dagger-lint-action.excalidraw.png)
+![h:480](assets/dagger-lint-action.excalidraw.png)
 
 ---
 
