@@ -248,15 +248,24 @@ We have a simple pipeline. In 3 steps:
 ![bg right fit](assets/dagger-plan.png)
 
 <!--
-As we explained in the concept dagger.
+As we explained in the slide of concept.
 To describe your pipeline you need a Plan.
 
-In this plan we will describe the actions we want to execute. With the action property of the plan.
+With the action property of the plan, we will describe the actions we want to execute.
 
-Don't forget that the actions are executed in containers. So at some moment, I will want to interact
-with my host, to read files, to read environment variables, to write a result to a file, etc...
+Don't forget that the actions are executed in containers. So at some moment, If I will want to interact
+with my host, to read files, to read environment variables, to write a result into a file, etc...
+
+I need to explain how to access the resources.
 
 This is what the Client property allows us to describe.
+
+**Have you seen this particular syntax starting with hashtags?**
+
+These hashtags are specific to the Cue language. They refer to definitions.
+These definitions can be local (i.e. described in the same file, like the example I showed you with john implementing the Adult definition)
+
+But the interest here is to be able to import external definitions. Dagger provides a number of definitions that can be used directly or combined to create new definitions. This is the choice we made to create our library.
 -->
 
 ---
@@ -265,49 +274,40 @@ This is what the Client property allows us to describe.
 
 ![bg left fit](assets/dagger-import.png)
 
-- Centrally develop common actions
-- Speed up pipeline creation by mutualizing / reusing code
+- Centrally develop common definitions
+- Speed up pipeline creation by mutualize / reusing code
 - Compose pipeline from reusable actions
 
 <!--
-You may have noticed on the previous slide hashtags in front of some keys.
-These hashtags are specific to the Cue language. They refer to definitions.
-
-These definitions can be local (i.e. described in the same file, like the example I showed you with john implementing the Adult definition)
-
-But the interest here is to be able to import external definitions. Dagger provides a number of definitions that can be used directly or combined to create new definitions. This is the choice we made to create our library.
+We made this choice because it allows us to centralize the common definitions between our different projects.
+This avoids redeveloping the wheel for each project. This is a real time saver to start quickly.
+It also allows us to ensure a relative homogeneity between projects.
 -->
 
 ---
 
-# Lint action
+# Markdown definitions
 
-![bg left:60% 83%](assets/dagger-action-lint-1.png)
-![bg right:60% contain](assets/dagger-action-lint-2.png)
+![bg right fit](assets/dagger-definition-markdown.excalidraw.png)
 
 ---
 
-# Lint usage
+# Lint in action
 
-![bg left 90%](assets/dagger-action-lint.png)
+![bg left fit](assets/dagger-lint-action.excalidraw.png)
 
 ---
 
 # Build
 
-![bg right fit](assets/dagger-action-build.png)
+![bg right fit](assets/dagger-action-build.excalidraw.png)
 
 - Chain multiple steps
 - Export action onto the host file system
 
 ---
 
-# Integration with GitHub
-
-[View code on GitHub](https://github.com/guiyomh/dagger-addo/blob/main/.github/workflows/marp-to-pages.yml)
-
----
-
+# ! todo ouverture
 ---
 <!-- _class: thank -->
 
