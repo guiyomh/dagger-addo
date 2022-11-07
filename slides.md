@@ -339,6 +339,35 @@ Ok, I know how to create actions, but where is my pipeline?
 - Chain multiple steps
 - Export action onto the host file system
 
+<!--
+To have a better understanding. Let's take the example of the action build.
+It's an action a little more complex, because we build 3 media: html, pdf, powerpoint.
+
+So we have created 3 sub-actions. They all take as input the sources of the project except the HTML action.
+The Html action requires to copy the assets in the publication directory.
+So we added a sub-action assets to do that.
+
+And then we linked our actions together. Instead of taking the sources of the project as input,
+the html action takes the output of the assets action (green box).
+
+And finally, we merge the output of our 3 sub-actions (html, pdf, powerpoint) with the definition core.#Merge.
+We get a file system with all the files generated.
+
+But that's not all! We are in a container. So we have to write the build output on our host machine.
+-->
+---
+
+# Interact with<br/>the host
+
+![bg h:450 left ](assets/client-filesystem.excalidraw.png)
+
+<!--
+To do this, we add a client:filesystem instruction to our plan.
+We specify the directory or file we want to target.
+We also specify with which right we want to access it (read/write).
+And we link the output of our build actions to the content.
+-->
+
 ---
 
 # ! todo ouverture
