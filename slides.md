@@ -308,6 +308,7 @@ It also allows us to ensure a relative homogeneity between projects.
 ---
 
 # ! todo ouverture
+
 ---
 <!-- _class: thank -->
 
