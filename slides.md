@@ -226,6 +226,8 @@ A simple pipeline to build the presentation slides.
 - 👉 **build** 👈
 - deploy
 
+Github: [guiyomh/dagger-addo](https://github.com/guiyomh/dagger-addo)
+
 <!--
 Let's take a simple use case.
 We made this presentation in markdown.
@@ -239,10 +241,9 @@ We have a simple pipeline. In 3 steps:
 
 ---
 
-# All start with a **Plan**
+# <!--left--> All start<br />with a Plan
 
-<!-- ![bg left fit](assets/loves-plan-together.jpeg) -->
-
+![50% fit](assets/loves-plan-together.jpeg)
 ![bg right fit](assets/dagger-plan.png)
 
 ---
@@ -272,7 +273,7 @@ We have a simple pipeline. In 3 steps:
 
 # Build
 
-![bg left fit](assets/dagger-action-build.png)
+![bg right fit](assets/dagger-action-build.png)
 
 - Chain multiple steps
 - Export action onto the host file system
