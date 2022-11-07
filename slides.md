@@ -216,7 +216,7 @@ Now it's time to practice.
 
 # Use case
 
-![bg right:50% w:100%](assets/pipeline.png)
+![bg right fit](assets/pipeline.png)
 
 A simple pipeline to build the presentation slides.
 
@@ -226,7 +226,8 @@ A simple pipeline to build the presentation slides.
 - 👉 **build** 👈
 - deploy
 
-Github: [guiyomh/dagger-addo](https://github.com/guiyomh/dagger-addo)
+Github: <https://github.com/guiyomh/dagger-addo>
+Slides: <https://guiyomh.github.io/dagger-addo>
 
 <!--
 Let's take a simple use case.
@@ -246,6 +247,18 @@ We have a simple pipeline. In 3 steps:
 ![50% fit](assets/loves-plan-together.jpeg)
 ![bg right fit](assets/dagger-plan.png)
 
+<!--
+As we explained in the concept dagger.
+To describe your pipeline you need a Plan.
+
+In this plan we will describe the actions we want to execute. With the action property of the plan.
+
+Don't forget that the actions are executed in containers. So at some moment, I will want to interact
+with my host, to read files, to read environment variables, to write a result to a file, etc...
+
+This is what the Client property allows us to describe.
+-->
+
 ---
 
 # Import dependencies
@@ -255,6 +268,15 @@ We have a simple pipeline. In 3 steps:
 - Centrally develop common actions
 - Speed up pipeline creation by mutualizing / reusing code
 - Compose pipeline from reusable actions
+
+<!--
+You may have noticed on the previous slide hashtags in front of some keys.
+These hashtags are specific to the Cue language. They refer to definitions.
+
+These definitions can be local (i.e. described in the same file, like the example I showed you with john implementing the Adult definition)
+
+But the interest here is to be able to import external definitions. Dagger provides a number of definitions that can be used directly or combined to create new definitions. This is the choice we made to create our library.
+-->
 
 ---
 
@@ -283,6 +305,8 @@ We have a simple pipeline. In 3 steps:
 # Integration with GitHub
 
 [View code on GitHub](https://github.com/guiyomh/dagger-addo/blob/main/.github/workflows/marp-to-pages.yml)
+
+---
 
 ---
 <!-- _class: thank -->
