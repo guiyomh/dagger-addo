@@ -332,6 +332,10 @@ Ok, I know how to create actions, but where is my pipeline?
 
 ---
 
+![h:480](assets/dagger-lint-action-ecr.excalidraw.png)
+
+---
+
 # Build
 
 ![bg right fit](assets/dagger-action-build.excalidraw.png)
