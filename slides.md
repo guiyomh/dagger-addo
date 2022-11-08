@@ -406,7 +406,9 @@ And we link the output of our build actions to the content.
 
 ---
 
-![](assets/dagger-build.mov)
+<video controls="controls" src="assets/dagger-build.mov">
+<p>Video montrant l'execution de du pipeline</p>
+</video>
 
 ---
 <!-- _class: header -->
