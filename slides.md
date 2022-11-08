@@ -405,6 +405,10 @@ And we link the output of our build actions to the content.
 -->
 
 ---
+
+![](assets/dagger-build.mov)
+
+---
 <!-- _class: header -->
 # Our experience feedback
 
