@@ -36,6 +36,12 @@ Kubernetes evangelist
 
 ## [Guillaume CAMUS](https://www.linkedin.com/in/guillaumecamus/?locale=en_US)
 
+<!--
+I am Guillaume. I've been working at manomano for 5 years where I had several roles,
+Lead Developer, QA, and now QE.
+My goal is to reduce the friction and time wasted due to an ecosystem in order to improve the developer.experience.
+-->
+
 Developer and Quality Engineer
 
 </div>
@@ -114,6 +120,16 @@ By using a container approach, Dagger solved the following issues :
 ---
 <!-- _class: header -->
 ![bg center:40% 40%](./assets/dagger_logo_portrait_on_black.svg)
+
+<!--
+Why are we presenting Dagger today?
+
+This is a tool that we discovered last April.
+And on the paper, it answers some of our problems to create a pipeline library.
+
+I'm not used to being a speaker, but the tool has helped me a lot
+and I wanted to give you some feedback on it.
+-->
 
 ---
 
@@ -324,16 +340,32 @@ We start by importing our cue package.
 Then we create a lint action that extends our markdown.#Lint definition (the red box)
 And we define our source and file input parameters.
 As we don't specify an image, dagger will use the image defined by default in our Lint definitions.
+-->
+
+---
+
+# How to use a custom image?
+
+![h:480](assets/dagger-lint-action-ecr.excalidraw.png)
+
+<!--
+As we have seen in the definition of the markdown lint.
+We have an optional parameter, allowing us to specify the default image.
+
+In this example, I start by defining some variables in the red box.
+
+Then, I want to use an image from a private ECR registry. So I need to authenticate myself.
+To do this, I plan an interaction with the host machine.
+Here, in the green box, I ask to run a command on the host machine to get a token for ECR.
+
+Then in the orange box, I use my markdown.image. I specify the repository, the tag and my credentials.
+
+Now I can inject my custom image into my lint action. By linking image.markdownlint to the image input of my lint action.
 
 That's it. It's not much more complicated than that.
 
 Ok, I know how to create actions, but where is my pipeline?
 -->
-
----
-
-![h:480](assets/dagger-lint-action-ecr.excalidraw.png)
-
 ---
 
 # Build
@@ -373,8 +405,20 @@ And we link the output of our build actions to the content.
 -->
 
 ---
+<!-- _class: header -->
+# Our experience feedback
 
-# ! todo ouverture
+<!--
+Dagger is a very young project that evolves very quickly.
+With Laurent, we discovered it in April of this year and we liked it immediately.
+
+On paper, it promises a nice developer experience. But we had some troubles.
+In particular, the learning curve of Cuelang. We took cuelang for configuration format, but it is much more.
+
+So, It took us a while to find a working pattern for what we wanted to do.
+
+But the dagger teams are aware of this problem and announced in October the release of new SDK in NodeJS, Python, Golant.
+-->
 
 ---
 <!-- _class: thank -->
