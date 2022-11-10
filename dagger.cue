@@ -31,30 +31,30 @@ dagger.#Plan & {
 			]
 		}
 
-		_image: {
-			markdownlint: markdown.#Image // & {
+		// _image: {
+		// 	markdownlint: markdown.#Image // & {
 
-			//     repository: "\(_#DefaultAwsAccount).dkr.ecr.\(_#DefaultAwsRegion).amazonaws.com/public/tmknom/markdownlint"
-			//     tag: "0.31.1"
-			//     auth: {
-			//         username: "AWS"
-			//         secret:  client.commands.ecrPassword.stdout
-			//     }
-			// }
-		}
+		// 	//     repository: "\(_#DefaultAwsAccount).dkr.ecr.\(_#DefaultAwsRegion).amazonaws.com/public/tmknom/markdownlint"
+		// 	//     tag: "0.31.1"
+		// 	//     auth: {
+		// 	//         username: "AWS"
+		// 	//         secret:  client.commands.ecrPassword.stdout
+		// 	//     }
+		// 	// }
+		// }
 
-		// Lint the project
+		// executes all linter necessary for the project
 		lint: {
 
-			// Lint markdown file
+			// check the markdown syntax
 			"markdown": markdown.#Lint & {
-				image:  _image.markdownlint
+				// image:  _image.markdownlint
 				source: _source.output
 				files: ["slides.md"]
 			}
 		}
 
-		// build marp
+		// built the slides of the presentation
 		build: {
 			assets: core.#Copy & {
 				input:    _source.output
@@ -62,6 +62,7 @@ dagger.#Plan & {
 				source:   "/assets"
 				dest:     "/dist/assets"
 			}
+			// built html slides
 			html: marp.#Build & {
 				source:     assets.output
 				markdown:   "slides.md"
@@ -69,6 +70,7 @@ dagger.#Plan & {
 				theme:      "addo.css"
 				outputType: "html"
 			}
+			// built pdf slides
 			pdf: marp.#Build & {
 				source:     _source.output
 				markdown:   "slides.md"
@@ -77,6 +79,7 @@ dagger.#Plan & {
 				name:       "addo2022"
 				outputType: "pdf"
 			}
+			// built powerpoint slides
 			pptx: marp.#Build & {
 				source:     _source.output
 				markdown:   "slides.md"
@@ -86,10 +89,12 @@ dagger.#Plan & {
 				outputType: "pptx"
 			}
 
+			// joins together the output of the 3 media
 			_result: core.#Merge & {
 				inputs: [html.output, pptx.output, pdf.output]
 			}
 
+			// exposes the result of the 3 presentations built
 			output: _result.output
 		}
 	}

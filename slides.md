@@ -199,6 +199,8 @@ CUE has all the features you wish in YAML or JSON:
 - even scripting
 
 <!--
+Dagger uses Cuelang to describe the pipelines.
+
 It is a configuration language created by google.
 Originally, it was used to configure Borg, the predecessor of the K8.
 Cue is a mix between YAML and JSON with additional features.
@@ -258,30 +260,23 @@ We have a simple pipeline. In 3 steps:
 
 ---
 
-# <!--left--> All start<br />with a Plan
+# All start<br />with a Plan
 
 ![50% fit](assets/loves-plan-together.jpeg)
 ![bg right fit](assets/dagger-plan.png)
 
 <!--
-As we explained in the slide of concept.
+As we explained in the slide of dagger's concepts.
 To describe your pipeline you need a Plan.
 
-With the action property of the plan, we will describe the actions we want to execute.
+Concretely, this is what a plan looks like.
 
-Don't forget that the actions are executed in containers. So at some moment, If I will want to interact
-with my host, to read files, to read environment variables, to write a result into a file, etc...
+We find the action property, we will describe the tasks we want to execute.
 
-I need to explain how to access the resources.
+And because dagger uses containers to execute actions.
+We find the client property, which allows us to create the interactions between our host machine and the containers.
 
-This is what the Client property allows us to describe.
-
-**Have you seen this particular syntax starting with hashtags?**
-
-These hashtags are specific to the Cue language. They refer to definitions.
-These definitions can be local (i.e. described in the same file, like the example I showed you with john implementing the Adult definition)
-
-But the interest here is to be able to import external definitions. Dagger provides a number of definitions that can be used directly or combined to create new definitions. This is the choice we made to create our library.
+We can see that there are some particularities to the language with the hashtag in front of some key words.
 -->
 
 ---
@@ -295,6 +290,13 @@ But the interest here is to be able to import external definitions. Dagger provi
 - Compose pipeline from reusable actions
 
 <!--
+These hashtags refer to definitions.
+These definitions can be local (i.e. like the example I showed you with john implementing the Adult definition)
+
+But the interest here is to be able to import external definitions. Dagger provides some definitions that can be used directly or combined to create new definitions.
+
+This is the choice we made to create our library.
+
 We made this choice because it allows us to centralize the common definitions between our different projects.
 This avoids redeveloping the wheel for each project. This is a real time saver to start quickly.
 It also allows us to ensure a relative homogeneity between projects.
@@ -320,7 +322,6 @@ Now let's create our definitions for markdown lint.
 We need the source of our project, and the list of files to transform into html.
 
 We use the image property, to define the execution environment of our future action.
-We have chosen to put it as input parameter in order to override it with a custom image.
 
 And finally, we use the definition `docker.Run` provided by dagger to run a command line in the container.
 
@@ -339,7 +340,6 @@ Now that we have our definitions, how can we use them?
 We start by importing our cue package.
 Then we create a lint action that extends our markdown.#Lint definition (the red box)
 And we define our source and file input parameters.
-As we don't specify an image, dagger will use the image defined by default in our Lint definitions.
 -->
 
 ---
@@ -358,7 +358,7 @@ Then, I want to use an image from a private ECR registry. So I need to authentic
 To do this, I plan an interaction with the host machine.
 Here, in the green box, I ask to run a command on the host machine to get a token for ECR.
 
-Then in the orange box, I use my markdown.image. I specify the repository, the tag and my credentials.
+Then in the orange box, I use my definition markdown.image. I specify the repository, the tag and my credentials.
 
 Now I can inject my custom image into my lint action. By linking image.markdownlint to the image input of my lint action.
 
@@ -423,7 +423,7 @@ In particular, the learning curve of Cuelang. We took cuelang for configuration 
 
 So, It took us a while to find a working pattern for what we wanted to do.
 
-But the dagger teams are aware of this problem and announced in October the release of new SDK in NodeJS, Python, Golant.
+But the dagger teams are aware of this problem and announced in October the release of new SDK in NodeJS, Python, Golang.
 -->
 
 ---
