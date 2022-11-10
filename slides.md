@@ -143,12 +143,12 @@ and I wanted to give you some feedback on it.
 
 <!--
 Dagger is a programmable CI/CD engine that runs your pipelines in containers.
-Dagger executes your pipelines entirely as standard OCI containers. This has several benefits:
+This has several benefits:
 
-- Instant local testing
-- Portability: the same pipeline can run on your local machine, a CI runner, a dedicated server, or any container hosting service.
+- Instant local testing: I can modify the pipeline and test it locally before sharing it
+- Portability: the same pipeline can run on your local machine, a CI runner, a dedicated server,...
 - Superior caching: every operation is cached by default, and caching works the same everywhere
-- Compatibility with the Docker ecosystem: if it runs in a container, you can add it to your pipeline.
+- Compatibility with the Docker ecosystem: if you have a tool that works in a container. You can add it to your pipeline.
 -->
 ---
 
@@ -157,12 +157,10 @@ Dagger executes your pipelines entirely as standard OCI containers. This has sev
 ![bg right h:50%](assets/dagger-how-it-work.excalidraw.png)
 
 <!--
-1. You need to install Dagger.
-2. Using the SDK library, your program opens a new session on a Dagger engine.
-3. Using the SDK library, your program prepares API requests describing the pipelines to be executed and sends them to the engine.
-4. When the engine receives an API request, it computes a Directed Acyclic Graph (DAG) of operations and starts processing the operations simultaneously.
-5. When all operations in the pipeline have been resolved, the engine returns the pipeline result to your program.
-6. Your program can use the pipeline result as input for new pipelines.
+Dagger comes as an overlay to docker.
+It works in client server mode. You have a sdk that allows to communicate with dagger engine.
+And dagger engine prepares the instructions and sends them to the container runtime.
+Which will execute your pipeline.
 -->
 
 ---
